@@ -1,6 +1,7 @@
 package org.soulcodeacademy.empresa.domain;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Projeto {
@@ -56,5 +57,19 @@ public class Projeto {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // Compara se estão no mesmo local da memória
+        if (o == null || getClass() != o.getClass()) return false; // Se o é nulo ou a classe dos dois for difernete, então são diferentes
+        Projeto projeto = (Projeto) o; // Tenta converter o objeto genérico para Projeto
+        // Se o ID dos objetos fdorem iguais os objetos são iguais
+        return IdProjeto.equals(projeto.IdProjeto);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(IdProjeto);
     }
 }
